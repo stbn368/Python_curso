@@ -56,11 +56,11 @@ print(huecos_palabra)
 palabra_analizada = []
 palabra_final = list(huecos_palabra)
 indice_letra = -1
+acierto = False
 
 while intentos > 0:
     print(f'Tienes {intentos} intentos.')
     letra = pedir_letra()
-    intentos -= 1
     palabra_analizada = analizador_palabra(letra, palabra_original)
 
     for l in palabra_analizada:
@@ -68,8 +68,13 @@ while intentos > 0:
         if l != '¬':
             palabra_final.pop(indice_letra)
             palabra_final.insert(indice_letra, l)
+            acierto = True
         else:
             pass
+    if not acierto:
+        intentos -= 1
+    
+    acierto = False
     indice_letra = -1
     print(''.join(palabra_final))
 
