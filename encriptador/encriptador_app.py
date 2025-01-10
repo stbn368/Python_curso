@@ -40,24 +40,34 @@ def desencriptar_archivo(nombre_archivo):
 # Generar y guardar la clave (solo la primera vez)
 # generar_clave()
 
-# Ruta del archivo a encriptar/desencriptar
-#ruta_archivo = "C:\\Users\\stbn_\\Desktop\\Automation_Python\\u_notes_ignore\\Jenkins_user.txt"
+def main():
+    print('[1] - Encriptar\n[2] - Desemcriptar')
+    try:
+        option_elegida = int(input('Elige una opción: '))
+    except ValueError:
+        print('Valor incorrecto.')
+        return
 
-print('[1] - Encriptar\n[2] - Desemcriptar')
-option_elegida = int(input('Elige una opción: '))
+    if option_elegida == 1:
+        # Encriptar el archivo
+        ruta_archivo = input('Introduce la ruta y el nombre del fichero: ')
+        try:
+            encriptar_archivo(ruta_archivo)
+            print(f"El archivo {ruta_archivo} ha sido encriptado.")
+        except Exception as e:
+            print(f"Error al encriptar el archivo: {e}")
+        
+    elif option_elegida == 2:
+        # Desencriptar el archivo
+        ruta_archivo = input('Introduce la ruta y el nombre del fichero: ')
+        try:
+            desencriptar_archivo(ruta_archivo)
+            print(f"El archivo {ruta_archivo} ha sido desencriptado.")
+        except Exception as e:
+            print(f"Error al desencriptar el archivo: {e}")
+    else:
+        print('Opción incorrecta.')
 
-if option_elegida == 1:
-    # Encriptar el archivo
-    ruta_archivo = input('Introduce la ruta y el nombre del fichero: ')
-    encriptar_archivo(ruta_archivo)
-    print(f"El archivo {ruta_archivo} ha sido encriptado.")
-elif option_elegida == 2:
-    # Desencriptar el archivo
-    ruta_archivo = input('Introduce la ruta y el nombre del fichero: ')
-    desencriptar_archivo(ruta_archivo)
-    print(f"El archivo {ruta_archivo} ha sido desencriptado.")
-else:
-    print('Opción incorrecta.')
-
-
+if __name__ == "__main__":
+    main()
 
